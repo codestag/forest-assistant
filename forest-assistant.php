@@ -93,7 +93,6 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 			require_once FA_PLUGIN_PATH . 'includes/widgets/widget-team.php';
 			require_once FA_PLUGIN_PATH . 'includes/widgets/widget-testimonials.php';
 
-			require_once FA_PLUGIN_PATH . 'includes/updater/updater.php';
 		}
 	}
 endif;
