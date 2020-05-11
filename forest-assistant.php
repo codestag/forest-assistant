@@ -81,6 +81,7 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function includes() {
+			// Widgets.
 			require_once FA_PLUGIN_PATH . 'includes/widgets/class-forest-widget.php';
 			require_once FA_PLUGIN_PATH . 'includes/widgets/widget-clients.php';
 			require_once FA_PLUGIN_PATH . 'includes/widgets/widget-featured-portfolio.php';
@@ -123,13 +124,16 @@ function forest_assistant_activation_notice() {
  */
 function forest_assistant_activation_check() {
 	$theme = wp_get_theme(); // gets the current theme
-	if ( 'Forest' == $theme->name || 'Forest' == $theme->parent_theme ) {
+	if ( 'Forest' === $theme->name || 'Forest' === $theme->parent_theme ) {
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			add_action( 'after_setup_theme', 'forest_assistant' );
 		} else {
 			forest_assistant();
 		}
 	} else {
+		if ( ! function_exists( 'deactivate_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'forest_assistant_activation_notice' );
 	}
