@@ -1,0 +1,65 @@
+.stag-metabox-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.stag-metabox-table th {
+  text-align: left;
+  width: 40%;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.stag-metabox-table td {
+  padding: 8px 10px;
+}
+
+.stag-metabox-table label {
+  text-shadow: white 0 1px 0;
+}
+
+.stag-metabox-table label span {
+  display: block;
+  font-weight: normal;
+  color: #999;
+  margin: 3px 0 0 0;
+}
+
+.stag-metabox-table input[type="text"], .stag-metabox-table textarea {
+  width: 100%;
+}
+
+.stag-metabox-table .file{
+  width: 86.45% !important;
+}
+
+.stag-box-file .file {
+  width: 77% !important;
+}
+
+#side-sortables .stag-metabox-table input[type="text"],
+#side-sortables .stag-metabox-table textarea {
+  width: 100%;
+}
+
+.stag-metabox-table tr {
+  border-top: 1px solid #ececec;
+}
+
+.stag-metabox-table label.radio-label {
+  margin-right: 10px;
+}
+
+.stag-metabox-table .wp-color-picker {
+  width: 80px !important;
+}
+
+.stag-gallery-thumbs {
+  margin-top: 20px;
+  clear: left;
+}
+
+.stag-gallery-thumbs li {
+  float: left;
+  margin-right: 10px;
+}
