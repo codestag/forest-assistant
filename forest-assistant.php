@@ -21,18 +21,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Forest_Assistant' ) ) :
 	/**
+	 * Forest Assistant Class.
 	 *
 	 * @since 1.0
 	 */
 	class Forest_Assistant {
 
 		/**
+		 * Base instance var.
 		 *
 		 * @since 1.0
 		 */
 		private static $instance;
 
 		/**
+		 * Register method to create a new instance.
 		 *
 		 * @since 1.0
 		 */
@@ -46,6 +49,7 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		}
 
 		/**
+		 * Init method for registering actions and hooks.
 		 *
 		 * @since 1.0
 		 */
@@ -58,6 +62,7 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		}
 
 		/**
+		 * Define constants.
 		 *
 		 * @since 1.0
 		 */
@@ -69,6 +74,7 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		}
 
 		/**
+		 * Define a constant.
 		 *
 		 * @param string $name
 		 * @param string $value
@@ -81,6 +87,7 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		}
 
 		/**
+		 * Includes files for the plugin.
 		 *
 		 * @since 1.0
 		 */
@@ -116,6 +123,7 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		}
 
 		/**
+		 * Enqueue admin styles.
 		 *
 		 * @since 1.0.0
 		 */
@@ -127,7 +135,7 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		}
 
 		/**
-		 *
+		 * Enqueue admin scripts.
 		 *
 		 * @since 1.0.0
 		 */
@@ -145,6 +153,7 @@ endif;
 
 
 /**
+ * Plugin instance.
  *
  * @since 1.0
  */
@@ -153,6 +162,7 @@ function forest_assistant() {
 }
 
 /**
+ * Plugin activation notice if not theme active.
  *
  * @since 1.0
  */
@@ -163,18 +173,14 @@ function forest_assistant_activation_notice() {
 }
 
 /**
- *
+ * Plugin activation check.
  *
  * @since 1.0
  */
 function forest_assistant_activation_check() {
 	$theme = wp_get_theme(); // gets the current theme
 	if ( 'Forest' === $theme->name || 'Forest' === $theme->parent_theme ) {
-		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-			add_action( 'after_setup_theme', 'forest_assistant' );
-		} else {
-			forest_assistant();
-		}
+		add_action( 'after_setup_theme', 'forest_assistant' );
 	} else {
 		if ( ! function_exists( 'deactivate_plugins' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
