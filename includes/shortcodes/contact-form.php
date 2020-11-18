@@ -82,12 +82,7 @@ if ( isset( $_POST['submitted'] ) ) {
 	<div class="grids">
 		<p class="grid-6">
 			<label for="contactName"><?php _e( 'Your Name', 'stag' ); ?></label>
-			<input type="text" name="contactName" id="contactName" value="
-			<?php
-			if ( isset( $_POST['contactName'] ) ) {
-				echo $_POST['contactName'];}
-?>
-">
+			<input type="text" name="contactName" id="contactName" value="<?php if ( isset( $_POST['contactName'] ) ) { echo $_POST['contactName']; } ?>">
 			<?php if ( isset( $errorMessages['nameError'] ) ) { ?>
 				<span class="error"><?php echo $errorMessages['nameError']; ?></span>
 			<?php } ?>
@@ -95,12 +90,7 @@ if ( isset( $_POST['submitted'] ) ) {
 
 		<p class="grid-6">
 			<label for="email"><?php _e( 'Your Email', 'stag' ); ?></label>
-			<input type="text" name="email" id="email" value="
-			<?php
-			if ( isset( $_POST['email'] ) ) {
-				echo $_POST['email'];}
-?>
-">
+			<input type="text" name="email" id="email" value="<?php if ( isset( $_POST['email'] ) ) { echo $_POST['email']; } ?>">
 			<?php if ( isset( $errorMessages['emailError'] ) ) { ?>
 				<span class="error"><?php echo $errorMessages['emailError']; ?></span>
 			<?php } ?>
@@ -112,16 +102,13 @@ if ( isset( $_POST['submitted'] ) ) {
 
 	<p class="commentsText">
 		<label for="commentsText"><?php _e( 'Your Message', 'stag' ); ?></label>
-		<textarea rows="8" name="comments" id="commentsText" >
-		<?php
+		<textarea rows="8" name="comments" id="commentsText"><?php
 		if ( isset( $_POST['comments'] ) ) {
 			if ( function_exists( 'stripslashes' ) ) {
 				echo stripslashes( $_POST['comments'] );
 			} else {
 				echo $_POST['comments']; }
-		}
-?>
-</textarea>
+		} ?></textarea>
 		<?php if ( isset( $errorMessages['commentError'] ) ) { ?>
 			<span class="error"><?php echo $errorMessages['commentError']; ?></span>
 		<?php } ?>
