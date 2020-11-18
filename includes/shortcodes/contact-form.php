@@ -9,63 +9,63 @@
  */
 function forest_contact_form_sc() {
 
-$nameError         = __( 'Please enter your name.', 'stag' );
-$emailError        = __( 'Please enter your email address.', 'stag' );
-$emailInvalidError = __( 'You entered an invalid email address.', 'stag' );
-$commentError      = __( 'Please enter a message.', 'stag' );
+	$nameError         = __( 'Please enter your name.', 'stag' );
+	$emailError        = __( 'Please enter your email address.', 'stag' );
+	$emailInvalidError = __( 'You entered an invalid email address.', 'stag' );
+	$commentError      = __( 'Please enter a message.', 'stag' );
 
-$errorMessages = array();
+	$errorMessages = array();
 
-if ( isset( $_POST['submitted'] ) ) {
-	if ( trim( $_POST['contactName'] ) === '' ) {
-		$errorMessages['nameError'] = $nameError;
-		$hasError                   = true;
-	} else {
-		$name = trim( $_POST['contactName'] );
-	}
-
-	if ( trim( $_POST['email'] ) === '' ) {
-		$errorMessages['emailError'] = $emailError;
-		$hasError                    = true;
-	} elseif ( ! is_email( trim( $_POST['email'] ) ) ) {
-		$errorMessages['emailInvalidError'] = $emailInvalidError;
-		$hasError                           = true;
-	} else {
-		$email = trim( $_POST['email'] );
-	}
-
-	if ( trim( $_POST['comments'] ) === '' ) {
-		$errorMessages['commentError'] = $commentError;
-		$hasError                      = true;
-	} else {
-		if ( function_exists( 'stripslashes' ) ) {
-			$comments = stripslashes( trim( $_POST['comments'] ) );
+	if ( isset( $_POST['submitted'] ) ) {
+		if ( trim( $_POST['contactName'] ) === '' ) {
+			$errorMessages['nameError'] = $nameError;
+			$hasError                   = true;
 		} else {
-			$comments = trim( $_POST['comments'] );
+			$name = trim( $_POST['contactName'] );
+		}
+
+		if ( trim( $_POST['email'] ) === '' ) {
+			$errorMessages['emailError'] = $emailError;
+			$hasError                    = true;
+		} elseif ( ! is_email( trim( $_POST['email'] ) ) ) {
+			$errorMessages['emailInvalidError'] = $emailInvalidError;
+			$hasError                           = true;
+		} else {
+			$email = trim( $_POST['email'] );
+		}
+
+		if ( trim( $_POST['comments'] ) === '' ) {
+			$errorMessages['commentError'] = $commentError;
+			$hasError                      = true;
+		} else {
+			if ( function_exists( 'stripslashes' ) ) {
+				$comments = stripslashes( trim( $_POST['comments'] ) );
+			} else {
+				$comments = trim( $_POST['comments'] );
+			}
+		}
+
+		if ( ! isset( $hasError ) ) {
+			$emailTo = forest_get_thememod_value( 'forest_contact_email' );
+			if ( ! isset( $emailTo ) || ( $emailTo == '' ) ) {
+				$emailTo = get_option( 'admin_email' );
+			}
+			$subject = '[Contact Form] From ' . $name;
+
+			$body  = "Name: $name \n\nEmail: $email \n\nMessage: $comments \n\n";
+			$body .= "--\n";
+			$body .= 'This mail is sent via contact form on ' . get_bloginfo( 'name' ) . "\n";
+			$body .= home_url();
+
+			$headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n" . 'Reply-To: ' . $email;
+
+			wp_mail( $emailTo, $subject, $body, $headers );
+			$emailSent = true;
 		}
 	}
 
-	if ( ! isset( $hasError ) ) {
-		$emailTo = forest_get_thememod_value( 'forest_contact_email' );
-		if ( ! isset( $emailTo ) || ( $emailTo == '' ) ) {
-			$emailTo = get_option( 'admin_email' );
-		}
-		$subject = '[Contact Form] From ' . $name;
-
-		$body  = "Name: $name \n\nEmail: $email \n\nMessage: $comments \n\n";
-		$body .= "--\n";
-		$body .= 'This mail is sent via contact form on ' . get_bloginfo( 'name' ) . "\n";
-		$body .= home_url();
-
-		$headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n" . 'Reply-To: ' . $email;
-
-		wp_mail( $emailTo, $subject, $body, $headers );
-		$emailSent = true;
-	}
-}
-
-?>
-<?php if ( isset( $emailSent ) && $emailSent === true ) : ?>
+	?>
+	<?php if ( isset( $emailSent ) && $emailSent === true ) : ?>
 
 <div class="stag-alert green">
 	<p><?php _e( 'Thanks, your email was sent successfully.', 'stag' ); ?></p>
@@ -103,12 +103,13 @@ if ( isset( $_POST['submitted'] ) ) {
 	<p class="commentsText">
 		<label for="commentsText"><?php _e( 'Your Message', 'stag' ); ?></label>
 		<textarea rows="8" name="comments" id="commentsText"><?php
-		if ( isset( $_POST['comments'] ) ) {
-			if ( function_exists( 'stripslashes' ) ) {
-				echo stripslashes( $_POST['comments'] );
-			} else {
-				echo $_POST['comments']; }
-		} ?></textarea>
+			if ( isset( $_POST['comments'] ) ) {
+				if ( function_exists( 'stripslashes' ) ) {
+					echo stripslashes( $_POST['comments'] );
+				} else {
+					echo $_POST['comments'];
+				}
+			} ?></textarea>
 		<?php if ( isset( $errorMessages['commentError'] ) ) { ?>
 			<span class="error"><?php echo $errorMessages['commentError']; ?></span>
 		<?php } ?>
@@ -119,6 +120,7 @@ if ( isset( $_POST['submitted'] ) ) {
 	</p>
 </form>
 
-<?php endif;
+	<?php
+endif;
 }
 add_shortcode( 'forest_contact_form', 'forest_contact_form_sc' );
