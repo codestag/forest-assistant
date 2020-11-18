@@ -1,8 +1,15 @@
 <?php
-add_action( 'widgets_init', array( 'stag_widget_team', 'register' ) );
+/**
+ * Widget: Team
+ *
+ * @package Stag_Customizer
+ */
+class Stag_Widget_Team extends WP_Widget {
 
-class stag_widget_team extends WP_Widget {
-	function __construct() {
+    /**
+     * Constructor
+     */
+	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-team',
 			'description' => __( 'Displays team members.', 'forest-assistant' ),
@@ -15,7 +22,15 @@ class stag_widget_team extends WP_Widget {
 		parent::__construct( 'stag_widget_team', __( 'Section: Team', 'forest-assistant' ), $widget_ops, $control_ops );
 	}
 
-	function widget( $args, $instance ) {
+    /**
+     * Output the widget content on the page.
+     *
+     * @since 1.0.0
+     *
+     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+     * @param array $instance Settings for the current widget instance.
+     */
+	public function widget( $args, $instance ) {
 		extract( $args );
 
 		// VARS FROM WIDGET SETTINGS
@@ -88,7 +103,16 @@ class stag_widget_team extends WP_Widget {
 	echo $after_widget;
 	}
 
-	function update( $new_instance, $old_instance ) {
+    /**
+     * Update function.
+     *
+     * @see WP_Widget->update
+     * @access public
+     * @param array $new_instance New widget settings.
+     * @param array $old_instance Old widget settings.
+     * @return array
+     */
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		// STRIP TAGS TO REMOVE HTML
@@ -97,7 +121,15 @@ class stag_widget_team extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+    /**
+     * Display the widget form settings.
+     *
+     * @see WP_Widget->form
+     * @access public
+     * @param array $instance Current widget instance.
+     * @return void
+     */
+	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
 			'title' => 'Our Team',
@@ -127,4 +159,4 @@ class stag_widget_team extends WP_Widget {
 
 }
 
-?>
+add_action( 'widgets_init', array( 'Stag_Widget_Team', 'register' ) );
