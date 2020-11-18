@@ -16,8 +16,8 @@ if ( ! class_exists( 'Forest_Widget_Testimonials' ) ) :
 		public function __construct() {
 			$this->widget_id          = 'stag_widget_testimonials';
 			$this->widget_class       = 'section-testimonials';
-			$this->widget_name        = esc_html__( 'Section: Testimonials', 'slope' );
-			$this->widget_description = esc_html__( 'Displays testimonials.', 'slope' );
+			$this->widget_name        = esc_html__( 'Section: Testimonials', 'forest-assistant' );
+			$this->widget_description = esc_html__( 'Displays testimonials.', 'forest-assistant' );
 			$this->settings           = array(
 				'title' => array(
 					'type'  => 'text',
