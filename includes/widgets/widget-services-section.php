@@ -6,9 +6,9 @@
  */
 class Stag_Widget_Services_Section extends WP_Widget {
 
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'services-section',
@@ -22,14 +22,14 @@ class Stag_Widget_Services_Section extends WP_Widget {
 		parent::__construct( 'stag_widget_services_section', __( 'Section: Services Section', 'forest-assistant' ), $widget_ops, $control_ops );
 	}
 
-    /**
-     * Output the widget content on the page.
-     *
-     * @since 1.0.0
-     *
-     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-     * @param array $instance Settings for the current widget instance.
-     */
+	/**
+	 * Output the widget content on the page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current widget instance.
+	 */
 	public function widget( $args, $instance ) {
 		extract( $args );
 
@@ -39,7 +39,8 @@ class Stag_Widget_Services_Section extends WP_Widget {
 		echo $before_widget;
 
 		if ( $title ) {
-			echo $before_title . $title . $after_title; }
+			echo $before_title . $title . $after_title;
+		}
 
 		echo '<div class="grids all-services">';
 		dynamic_sidebar( 'sidebar-services' );
@@ -48,15 +49,15 @@ class Stag_Widget_Services_Section extends WP_Widget {
 		echo $after_widget;
 	}
 
-    /**
-     * Update function.
-     *
-     * @see WP_Widget->update
-     * @access public
-     * @param array $new_instance New widget settings.
-     * @param array $old_instance Old widget settings.
-     * @return array
-     */
+	/**
+	 * Update function.
+	 *
+	 * @see WP_Widget->update
+	 * @access public
+	 * @param array $new_instance New widget settings.
+	 * @param array $old_instance Old widget settings.
+	 * @return array
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -65,14 +66,14 @@ class Stag_Widget_Services_Section extends WP_Widget {
 		return $instance;
 	}
 
-    /**
-     * Display the widget form settings.
-     *
-     * @see WP_Widget->form
-     * @access public
-     * @param array $instance Current widget instance.
-     * @return void
-     */
+	/**
+	 * Display the widget form settings.
+	 *
+	 * @see WP_Widget->form
+	 * @access public
+	 * @param array $instance Current widget instance.
+	 * @return void
+	 */
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
@@ -93,7 +94,7 @@ class Stag_Widget_Services_Section extends WP_Widget {
 	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 	</p>
 
-	<?php
+		<?php
 	}
 
 	/**

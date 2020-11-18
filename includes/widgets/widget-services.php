@@ -6,9 +6,9 @@
  */
 class Stag_Widget_Services extends WP_Widget {
 
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'service',
@@ -22,14 +22,14 @@ class Stag_Widget_Services extends WP_Widget {
 		parent::__construct( 'stag_widget_services', __( 'Service Box', 'forest-assistant' ), $widget_ops, $control_ops );
 	}
 
-    /**
-     * Output the widget content on the page.
-     *
-     * @since 1.0.0
-     *
-     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-     * @param array $instance Settings for the current widget instance.
-     */
+	/**
+	 * Output the widget content on the page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current widget instance.
+	 */
 	public function widget( $args, $instance ) {
 		extract( $args );
 
@@ -40,10 +40,6 @@ class Stag_Widget_Services extends WP_Widget {
 
 		echo $before_widget;
 
-	?>
-
-
-		<?php
 		if ( ! empty( $custom_icon ) ) {
 			echo '<div class="custom-icon"><img src="' . $custom_icon . '" alt=""></div>';
 		}
@@ -64,15 +60,15 @@ class Stag_Widget_Services extends WP_Widget {
 
 	}
 
-    /**
-     * Update function.
-     *
-     * @see WP_Widget->update
-     * @access public
-     * @param array $new_instance New widget settings.
-     * @param array $old_instance Old widget settings.
-     * @return array
-     */
+	/**
+	 * Update function.
+	 *
+	 * @see WP_Widget->update
+	 * @access public
+	 * @param array $new_instance New widget settings.
+	 * @param array $old_instance Old widget settings.
+	 * @return array
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -84,14 +80,14 @@ class Stag_Widget_Services extends WP_Widget {
 		return $instance;
 	}
 
-    /**
-     * Display the widget form settings.
-     *
-     * @see WP_Widget->form
-     * @access public
-     * @param array $instance Current widget instance.
-     * @return void
-     */
+	/**
+	 * Display the widget form settings.
+	 *
+	 * @see WP_Widget->form
+	 * @access public
+	 * @param array $instance Current widget instance.
+	 * @return void
+	 */
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
@@ -103,7 +99,7 @@ class Stag_Widget_Services extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		/* HERE GOES THE FORM */
-	?>
+		?>
 
 	<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'forest-assistant' ); ?></label>
@@ -112,17 +108,17 @@ class Stag_Widget_Services extends WP_Widget {
 
 	<p>
 		<label for="<?php echo $this->get_field_id( 'description' ); ?>"><?php _e( 'Description:', 'forest-assistant' ); ?></label>
-		<textarea rows="5" class="widefat" id="<?php echo $this->get_field_id( 'description' ); ?>" name="<?php echo $this->get_field_name( 'description' ); ?>"><?php echo @$instance['description']; ?></textarea>
+		<textarea rows="5" class="widefat" id="<?php echo $this->get_field_id( 'description' ); ?>" name="<?php echo $this->get_field_name( 'description' ); ?>"><?php echo $instance['description']; ?></textarea>
 		<span class="description"><?php _e( 'Some HTML would not harm.', 'forest-assistant' ); ?></span>
 	</p>
 
 	<p>
 	  <label for="<?php echo $this->get_field_id( 'customicon' ); ?>"><?php _e( 'Custom Icon URL:', 'forest-assistant' ); ?></label>
-	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'customicon' ); ?>" name="<?php echo $this->get_field_name( 'customicon' ); ?>" value="<?php echo @$instance['customicon']; ?>" />
+	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'customicon' ); ?>" name="<?php echo $this->get_field_name( 'customicon' ); ?>" value="<?php echo $instance['customicon']; ?>" />
 	  <span class="description"><?php _e( 'Enter the custom icon URL if you want to use your own icon or choose one below. Recommended size 100x100px.', 'forest-assistant' ); ?></span>
 	</p>
 
-	<?php
+		<?php
 	}
 
 	/**

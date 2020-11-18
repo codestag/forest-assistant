@@ -6,9 +6,9 @@
  */
 class Stag_Widget_Latest_Posts extends WP_Widget {
 
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-latest-posts',
@@ -22,14 +22,14 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 		parent::__construct( 'stag_widget_latest_posts', __( 'Section: Latest Posts', 'forest-assistant' ), $widget_ops, $control_ops );
 	}
 
-    /**
-     * Output the widget content on the page.
-     *
-     * @since 1.0.0
-     *
-     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-     * @param array $instance Settings for the current widget instance.
-     */
+	/**
+	 * Output the widget content on the page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current widget instance.
+	 */
 	public function widget( $args, $instance ) {
 		extract( $args );
 
@@ -46,13 +46,13 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 		}
 
 		if ( $title ) {
-			echo $before_title . $title . $after_title; }
+			echo $before_title . $title . $after_title;
+		}
 
 		?>
 
 		<div class="grids">
 			<?php
-
 			query_posts(
 				array(
 					'post_type'           => 'post',
@@ -64,7 +64,7 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 
 			while ( have_posts() ) :
 				the_post();
-			?>
+				?>
 
 			<article <?php post_class( 'grid-6' ); ?> id="post-<?php the_ID(); ?>">
 
@@ -96,7 +96,7 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 				</div>
 			</article>
 
-			<?php
+				<?php
 			endwhile;
 			wp_reset_query();
 
@@ -109,15 +109,15 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 
 	}
 
-    /**
-     * Update function.
-     *
-     * @see WP_Widget->update
-     * @access public
-     * @param array $new_instance New widget settings.
-     * @param array $old_instance Old widget settings.
-     * @return array
-     */
+	/**
+	 * Update function.
+	 *
+	 * @see WP_Widget->update
+	 * @access public
+	 * @param array $new_instance New widget settings.
+	 * @param array $old_instance Old widget settings.
+	 * @return array
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -128,14 +128,14 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 		return $instance;
 	}
 
-    /**
-     * Display the widget form settings.
-     *
-     * @see WP_Widget->form
-     * @access public
-     * @param array $instance Current widget instance.
-     * @return void
-     */
+	/**
+	 * Display the widget form settings.
+	 *
+	 * @see WP_Widget->form
+	 * @access public
+	 * @param array $instance Current widget instance.
+	 * @return void
+	 */
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
@@ -145,20 +145,20 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		/* HERE GOES THE FORM */
-	?>
+		?>
 
 	<p>
 	  <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'forest-assistant' ); ?></label>
-	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo @$instance['title']; ?>" />
+	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 	</p>
 
 	<p>
 	  <label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'Button Text:', 'forest-assistant' ); ?></label>
-	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" value="<?php echo @$instance['button_text']; ?>" />
+	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" value="<?php echo $instance['button_text']; ?>" />
 	  <span class="description"><?php _e( 'Enter the text for blog button', 'forest-assistant' ); ?></span>
 	</p>
 
-	<?php
+		<?php
 	}
 
 	/**

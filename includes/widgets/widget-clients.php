@@ -6,9 +6,9 @@
  */
 class Stag_Widget_Clients extends WP_Widget {
 
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-clients',
@@ -22,14 +22,14 @@ class Stag_Widget_Clients extends WP_Widget {
 		parent::__construct( 'stag_widget_clients', __( 'Section: Clients', 'forest-assistant' ), $widget_ops, $control_ops );
 	}
 
-    /**
-     * Output the widget content on the page.
-     *
-     * @since 1.0.0
-     *
-     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-     * @param array $instance Settings for the current widget instance.
-     */
+	/**
+	 * Output the widget content on the page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current widget instance.
+	 */
 	public function widget( $args, $instance ) {
 		extract( $args );
 
@@ -40,32 +40,33 @@ class Stag_Widget_Clients extends WP_Widget {
 		echo $before_widget;
 
 		if ( $title ) {
-			echo $before_title . $title . $after_title; }
+			echo $before_title . $title . $after_title;
+		}
 
 		$urls = explode( "\n", $urls );
-	?>
+		?>
 
-	  <div class="grids">
-		<?php foreach ( $urls as $url ) : ?>
-	  <figure class="grid-3">
-		<img src="<?php echo esc_url( $url ); ?>" alt="">
-	  </figure>
-		<?php endforeach; ?>
-	  </div>
+		  <div class="grids">
+			<?php foreach ( $urls as $url ) : ?>
+			  <figure class="grid-3">
+				<img src="<?php echo esc_url( $url ); ?>" alt="">
+			  </figure>
+			<?php endforeach; ?>
+		  </div>
 
 		<?php
 		echo $after_widget;
 	}
 
-    /**
-     * Update function.
-     *
-     * @see WP_Widget->update
-     * @access public
-     * @param array $new_instance New widget settings.
-     * @param array $old_instance Old widget settings.
-     * @return array
-     */
+	/**
+	 * Update function.
+	 *
+	 * @see WP_Widget->update
+	 * @access public
+	 * @param array $new_instance New widget settings.
+	 * @param array $old_instance Old widget settings.
+	 * @return array
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -76,14 +77,14 @@ class Stag_Widget_Clients extends WP_Widget {
 		return $instance;
 	}
 
-    /**
-     * Display the widget form settings.
-     *
-     * @see WP_Widget->form
-     * @access public
-     * @param array $instance Current widget instance.
-     * @return void
-     */
+	/**
+	 * Display the widget form settings.
+	 *
+	 * @see WP_Widget->form
+	 * @access public
+	 * @param array $instance Current widget instance.
+	 * @return void
+	 */
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
@@ -94,7 +95,7 @@ class Stag_Widget_Clients extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		/* HERE GOES THE FORM */
-	?>
+		?>
 
 	<p>
 	  <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'forest-assistant' ); ?></label>
@@ -106,7 +107,7 @@ class Stag_Widget_Clients extends WP_Widget {
 		<textarea rows="16" cols="20" class="widefat" id="<?php echo $this->get_field_id( 'urls' ); ?>" name="<?php echo $this->get_field_name( 'urls' ); ?>"><?php echo @$instance['urls']; ?></textarea>
 	</p>
 
-	<?php
+		<?php
 	}
 
 	/**

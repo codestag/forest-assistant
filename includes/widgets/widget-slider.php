@@ -6,9 +6,9 @@
  */
 class Stag_Widget_Slider extends WP_Widget {
 
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-slider',
@@ -22,14 +22,14 @@ class Stag_Widget_Slider extends WP_Widget {
 		parent::__construct( 'stag_widget_slider', __( 'Section: Slider', 'forest-assistant' ), $widget_ops, $control_ops );
 	}
 
-    /**
-     * Output the widget content on the page.
-     *
-     * @since 1.0.0
-     *
-     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-     * @param array $instance Settings for the current widget instance.
-     */
+	/**
+	 * Output the widget content on the page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current widget instance.
+	 */
 	public function widget( $args, $instance ) {
 		extract( $args );
 
@@ -45,19 +45,18 @@ class Stag_Widget_Slider extends WP_Widget {
 		);
 
 		if ( have_posts() ) :
-
-		?>
+			?>
 
 		<div id="slider" class="flexslider">
 			<ul class="slides">
 				<?php
 				while ( have_posts() ) :
 					the_post();
-?>
-				<?php
+					?>
+					<?php
 					$button_link = get_post_meta( get_the_ID(), '_stag_slider_link', true );
 					$button_text = get_post_meta( get_the_ID(), '_stag_slider_text', true );
-				?>
+					?>
 				<li>
 					<div class="flex-caption">
 						<div class="flex-caption--inner">
@@ -76,25 +75,23 @@ class Stag_Widget_Slider extends WP_Widget {
 			<div class="flex-container"></div>
 		</div>
 
-		<?php
-
+			<?php
 		endif;
 
 		wp_reset_query();
 
 		echo $after_widget;
-
 	}
 
-    /**
-     * Update function.
-     *
-     * @see WP_Widget->update
-     * @access public
-     * @param array $new_instance New widget settings.
-     * @param array $old_instance Old widget settings.
-     * @return array
-     */
+	/**
+	 * Update function.
+	 *
+	 * @see WP_Widget->update
+	 * @access public
+	 * @param array $new_instance New widget settings.
+	 * @param array $old_instance Old widget settings.
+	 * @return array
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -103,14 +100,14 @@ class Stag_Widget_Slider extends WP_Widget {
 		return $instance;
 	}
 
-    /**
-     * Display the widget form settings.
-     *
-     * @see WP_Widget->form
-     * @access public
-     * @param array $instance Current widget instance.
-     * @return void
-     */
+	/**
+	 * Display the widget form settings.
+	 *
+	 * @see WP_Widget->form
+	 * @access public
+	 * @param array $instance Current widget instance.
+	 * @return void
+	 */
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
@@ -119,11 +116,11 @@ class Stag_Widget_Slider extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		/* HERE GOES THE FORM */
-	?>
+		?>
 
 	<p><span class="description"><?php _e( 'Yay! No options to set!', 'forest-assistant' ); ?></span></p>
 
-	<?php
+		<?php
 	}
 
 	/**

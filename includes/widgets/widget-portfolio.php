@@ -6,9 +6,9 @@
  */
 class Stag_Widget_Portfolio extends WP_Widget {
 
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-portfolio',
@@ -22,14 +22,14 @@ class Stag_Widget_Portfolio extends WP_Widget {
 		parent::__construct( 'stag_widget_portfolio', __( 'Section: Portfolio', 'forest-assistant' ), $widget_ops, $control_ops );
 	}
 
-    /**
-     * Output the widget content on the page.
-     *
-     * @since 1.0.0
-     *
-     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-     * @param array $instance Settings for the current widget instance.
-     */
+	/**
+	 * Output the widget content on the page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current widget instance.
+	 */
 	public function widget( $args, $instance ) {
 		extract( $args );
 
@@ -44,15 +44,16 @@ class Stag_Widget_Portfolio extends WP_Widget {
 		if ( $button_link != '' ) {
 			?>
 		  <a href="<?php echo $button_link; ?>" class="button portfolio-button"><?php echo $button_text; ?></a>
-		<?php
+			<?php
 		}
 
 		?>
 
 		<?php
 		if ( $title ) {
-			echo $before_title . $title . $after_title; }
-?>
+			echo $before_title . $title . $after_title;
+		}
+		?>
 
 	<ul class="portfolio-filter">
 	  <li class="button filter" data-filter="all"><?php _e( 'All', 'forest-assistant' ); ?></li>
@@ -72,9 +73,7 @@ class Stag_Widget_Portfolio extends WP_Widget {
 	  </ul>
 
 	  <ul id="portfolio-filter" class="grids portfolios">
-
 		<?php
-
 		query_posts(
 			array(
 				'post_type'      => 'portfolio',
@@ -104,7 +103,7 @@ class Stag_Widget_Portfolio extends WP_Widget {
 
 				$class = 'grid-4 mix ' . $skill;
 
-					?>
+				?>
 
 					<li id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
 
@@ -123,7 +122,7 @@ class Stag_Widget_Portfolio extends WP_Widget {
 						'class'    => 'lazy',
 					);
 
-								?>
+					?>
 								<?php echo get_the_post_thumbnail( get_the_ID(), 'portfolio-thumb', $attr ); ?>
 							</a>
 
@@ -165,15 +164,15 @@ class Stag_Widget_Portfolio extends WP_Widget {
 		echo $after_widget;
 	}
 
-    /**
-     * Update function.
-     *
-     * @see WP_Widget->update
-     * @access public
-     * @param array $new_instance New widget settings.
-     * @param array $old_instance Old widget settings.
-     * @return array
-     */
+	/**
+	 * Update function.
+	 *
+	 * @see WP_Widget->update
+	 * @access public
+	 * @param array $new_instance New widget settings.
+	 * @param array $old_instance Old widget settings.
+	 * @return array
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -186,14 +185,14 @@ class Stag_Widget_Portfolio extends WP_Widget {
 		return $instance;
 	}
 
-    /**
-     * Display the widget form settings.
-     *
-     * @see WP_Widget->form
-     * @access public
-     * @param array $instance Current widget instance.
-     * @return void
-     */
+	/**
+	 * Display the widget form settings.
+	 *
+	 * @see WP_Widget->form
+	 * @access public
+	 * @param array $instance Current widget instance.
+	 * @return void
+	 */
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
@@ -231,7 +230,7 @@ class Stag_Widget_Portfolio extends WP_Widget {
 	  <span class="description"><?php _e( 'Enter the number of recent portfolio items to display at homepage.', 'forest-assistant' ); ?></span>
 	</p>
 
-	<?php
+		<?php
 	}
 
 	/**
