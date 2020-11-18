@@ -30,7 +30,6 @@ function stag_metabox_page_colors() {
 				'id'   => '_stag_custom_background_color',
 				'type' => 'color',
 				'std'  => '',
-			  // 'val' => '#2a2d30'
 			),
 		),
 	);
@@ -70,13 +69,13 @@ function stag_portfolio_backgrounds( $output ) {
 		$opacity    = get_post_meta( $postid, '_stag_custom_background_opacity', true );
 		$opacityVal = intval( $opacity ) / 100;
 
-		if ( $color != '' ) {
+		if (  '' !== $color ) {
 			$output .= ".the-hero-{$postid} { background-color: {$color}; }\n";
 		}
-		if ( $bg != '' ) {
+		if ( '' !== $bg ) {
 			$output .= ".the-cover-{$postid} {  background-image: url({$bg}); }\n";
 		}
-		if ( $opacity != '' && $bg != '' ) {
+		if ( '' !== $opacity && '' !== $bg ) {
 			$output .= ".the-cover-{$postid} { opacity: {$opacityVal}; -ms-filter: 'alpha(opacity=" . $opacity . ")'; }\n\n";
 		}
 	}
