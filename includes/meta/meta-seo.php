@@ -57,32 +57,6 @@ function stag_metabox_seo() {
 add_action( 'add_meta_boxes', 'stag_metabox_seo' );
 
 
-/**
- * Alter WordPress title.
- *
- * @deprecated 2.1.0
- * @param string $title Default WordPress title.
- * @return void
- */
-function stag_metabox_seo_title( $title ) {
-	global $post;
-
-	if ( $post && ! stag_check_third_party_seo() ) {
-		if ( is_home() || is_archive() || is_search() ) {
-			$postid = get_option( 'page_for_posts' );
-		} else {
-			$postid = $post->ID;
-		}
-
-		if ( $seo_title = get_post_meta( $postid, '_stag_seo_title', true ) ) {
-			return $seo_title;
-		}
-	}
-	return $title;
-}
-// add_filter('wp_title', 'stag_metabox_seo_title', 15);
-
-
 function stag_metabox_seo_description() {
 	global $post;
 
