@@ -9,10 +9,10 @@
  */
 function forest_contact_form_sc() {
 
-	$nameError         = __( 'Please enter your name.', 'stag' );
-	$emailError        = __( 'Please enter your email address.', 'stag' );
-	$emailInvalidError = __( 'You entered an invalid email address.', 'stag' );
-	$commentError      = __( 'Please enter a message.', 'stag' );
+	$nameError         = __( 'Please enter your name.', 'forest-assistant' );
+	$emailError        = __( 'Please enter your email address.', 'forest-assistant' );
+	$emailInvalidError = __( 'You entered an invalid email address.', 'forest-assistant' );
+	$commentError      = __( 'Please enter a message.', 'forest-assistant' );
 
 	$errorMessages = array();
 
@@ -68,7 +68,7 @@ function forest_contact_form_sc() {
 	<?php if ( isset( $emailSent ) && $emailSent === true ) : ?>
 
 <div class="stag-alert green">
-	<p><?php _e( 'Thanks, your email was sent successfully.', 'stag' ); ?></p>
+	<p><?php _e( 'Thanks, your email was sent successfully.', 'forest-assistant' ); ?></p>
 </div>
 
 <?php else : ?>
@@ -77,11 +77,11 @@ function forest_contact_form_sc() {
 
 	<hr class="stag-divider plain">
 
-	<h2><?php _e( 'Send us a Message', 'stag' ); ?></h2>
+	<h2><?php _e( 'Send us a Message', 'forest-assistant' ); ?></h2>
 
 	<div class="grids">
 		<p class="grid-6">
-			<label for="contactName"><?php _e( 'Your Name', 'stag' ); ?></label>
+			<label for="contactName"><?php _e( 'Your Name', 'forest-assistant' ); ?></label>
 			<input type="text" name="contactName" id="contactName" value="<?php if ( isset( $_POST['contactName'] ) ) { echo $_POST['contactName']; } ?>">
 			<?php if ( isset( $errorMessages['nameError'] ) ) { ?>
 				<span class="error"><?php echo $errorMessages['nameError']; ?></span>
@@ -89,7 +89,7 @@ function forest_contact_form_sc() {
 		</p>
 
 		<p class="grid-6">
-			<label for="email"><?php _e( 'Your Email', 'stag' ); ?></label>
+			<label for="email"><?php _e( 'Your Email', 'forest-assistant' ); ?></label>
 			<input type="text" name="email" id="email" value="<?php if ( isset( $_POST['email'] ) ) { echo $_POST['email']; } ?>">
 			<?php if ( isset( $errorMessages['emailError'] ) ) { ?>
 				<span class="error"><?php echo $errorMessages['emailError']; ?></span>
@@ -101,7 +101,7 @@ function forest_contact_form_sc() {
 	</div>
 
 	<p class="commentsText">
-		<label for="commentsText"><?php _e( 'Your Message', 'stag' ); ?></label>
+		<label for="commentsText"><?php _e( 'Your Message', 'forest-assistant' ); ?></label>
 		<textarea rows="8" name="comments" id="commentsText"><?php
 			if ( isset( $_POST['comments'] ) ) {
 				if ( function_exists( 'stripslashes' ) ) {
@@ -116,7 +116,7 @@ function forest_contact_form_sc() {
 	</p>
 
 	<p class="buttons">
-		<input type="submit" id="submitted" class="contact-form-button" name="submitted" value="<?php _e( 'Send Message', 'stag' ); ?>">
+		<input type="submit" id="submitted" class="contact-form-button" name="submitted" value="<?php _e( 'Send Message', 'forest-assistant' ); ?>">
 	</p>
 </form>
 
