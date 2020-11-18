@@ -1,34 +1,32 @@
 <?php
 
-add_action('add_meta_boxes', 'stag_metabox_page_colors');
-
 function stag_metabox_page_colors(){
 
   $meta_box = array(
 	'id' => 'stag-metabox-page-colors',
-	'title' => __('Title Background Settings', 'stag'),
-	'description' => __('Here you can customize the appearance of the post/page title\'s background.', 'stag'),
+	'title' => __('Title Background Settings', 'forest-assistant'),
+	'description' => __('Here you can customize the appearance of the post/page title\'s background.', 'forest-assistant'),
 	'page' => 'page',
 	'context' => 'normal',
 	'priority' => 'high',
 	'fields' => array(
 	  array(
-		'name' => __('Background Image', 'stag'),
-		'desc' => __(' Choose background image for the title of this post/page.', 'stag'),
+		'name' => __('Background Image', 'forest-assistant'),
+		'desc' => __(' Choose background image for the title of this post/page.', 'forest-assistant'),
 		'id' => '_stag_custom_background',
 		'type' => 'file',
 		'std' => '',
 		),
 	  array(
-		'name' => __('Background Opacity', 'stag'),
-		'desc' => __('Choose background image\'s opacity for the title of this post/page e.g. 30 for 30% opacity. Choose 100 for no opacity', 'stag'),
+		'name' => __('Background Opacity', 'forest-assistant'),
+		'desc' => __('Choose background image\'s opacity for the title of this post/page e.g. 30 for 30% opacity. Choose 100 for no opacity', 'forest-assistant'),
 		'id' => '_stag_custom_background_opacity',
 		'type' => 'text',
 		'std' => '5'
 		),
 	  array(
-		'name' => __('Background Color', 'stag'),
-		'desc' => __('Choose background color for the title of this post/page.', 'stag'),
+		'name' => __('Background Color', 'forest-assistant'),
+		'desc' => __('Choose background color for the title of this post/page.', 'forest-assistant'),
 		'id' => '_stag_custom_background_color',
 		'type' => 'color',
 		'std' => '',
@@ -39,14 +37,15 @@ function stag_metabox_page_colors(){
 	stag_add_meta_box($meta_box);
 
 	$meta_box['page'] = 'portfolio';
-	$meta_box['title'] = __('Portfolio Item Background Settings', 'stag');
-	$meta_box['description'] = __('Here you can customize the background appearance of the top section of this portfolio page.', 'stag');
-	$meta_box['fields'][0]['desc'] = __('Choose background image for the top section.', 'stag');
-	$meta_box['fields'][1]['desc'] = __('Choose background image\'s opacity for the top section e.g. 30 for 30% opacity. Choose 100 for no opacity', 'stag');
-	$meta_box['fields'][2]['desc'] = __('Choose background color for the top section.', 'stag');
+	$meta_box['title'] = __('Portfolio Item Background Settings', 'forest-assistant');
+	$meta_box['description'] = __('Here you can customize the background appearance of the top section of this portfolio page.', 'forest-assistant');
+	$meta_box['fields'][0]['desc'] = __('Choose background image for the top section.', 'forest-assistant');
+	$meta_box['fields'][1]['desc'] = __('Choose background image\'s opacity for the top section e.g. 30 for 30% opacity. Choose 100 for no opacity', 'forest-assistant');
+	$meta_box['fields'][2]['desc'] = __('Choose background color for the top section.', 'forest-assistant');
 	
 	stag_add_meta_box($meta_box);
 }
+add_action('add_meta_boxes', 'stag_metabox_page_colors');
 
 function stag_portfolio_backgrounds($output){
 	$output .= "\n/* Custom Post Background Colors and Images */\n";

@@ -1,48 +1,46 @@
 <?php
 
-add_action('add_meta_boxes', 'stag_metabox_seo');
-
 function stag_metabox_seo(){
   $meta_box = array(
     'id' => 'stag_metabox_seo',
-    'title' => __('SEO Settings', 'stag'),
-    'description' => __('Customize the SEO settings of your posts/pages', 'stag'),
+    'title' => __('SEO Settings', 'forest-assistant'),
+    'description' => __('Customize the SEO settings of your posts/pages', 'forest-assistant'),
     'page' => 'post',
     'context' => 'normal',
     'priority' => 'high',
     'fields' => array(
       array(
-        'name' => __('Title', 'stag'),
-        'desc' => __('Enter the post title, most search engines use a maximum of 60 characters.', 'stag'),
+        'name' => __('Title', 'forest-assistant'),
+        'desc' => __('Enter the post title, most search engines use a maximum of 60 characters.', 'forest-assistant'),
         'id' => '_stag_seo_title',
         'type' => 'text',
         'std' => ''
         ),
       array(
-        'name' => __('Description', 'stag'),
-        'desc' => __('Enter the post SEO description, most search engines use a maximum of 160 characters.', 'stag'),
+        'name' => __('Description', 'forest-assistant'),
+        'desc' => __('Enter the post SEO description, most search engines use a maximum of 160 characters.', 'forest-assistant'),
         'id' => '_stag_seo_description',
         'type' => 'text',
         'std' => ''
         ),
       array(
-        'name' => __('Keywords', 'stag'),
-        'desc' => __('A comma separated list of keywords', 'stag'),
+        'name' => __('Keywords', 'forest-assistant'),
+        'desc' => __('A comma separated list of keywords', 'forest-assistant'),
         'id' => '_stag_seo_keywords',
         'type' => 'text',
         'std' => ''
         ),
       array(
-        'name' => __('Meta Robots Index', 'stag'),
-        'desc' => __('Do you want robots to index this page?', 'stag'),
+        'name' => __('Meta Robots Index', 'forest-assistant'),
+        'desc' => __('Do you want robots to index this page?', 'forest-assistant'),
         'id' => '_stag_seo_robots_index',
         'type' => 'radio',
         'std' => 'index',
         'options' => array('index', 'noindex')
         ),
       array(
-        'name' => __('Meta Robots Follow', 'stag'),
-        'desc' => __('Do you want robots to follow links from this page?', 'stag'),
+        'name' => __('Meta Robots Follow', 'forest-assistant'),
+        'desc' => __('Do you want robots to follow links from this page?', 'forest-assistant'),
         'id' => '_stag_seo_robots_follow',
         'type' => 'radio',
         'std' => 'follow',
@@ -56,6 +54,8 @@ function stag_metabox_seo(){
     stag_add_meta_box($meta_box);
   }
 }
+add_action('add_meta_boxes', 'stag_metabox_seo');
+
 
 /**
  * Alter WordPress title.
