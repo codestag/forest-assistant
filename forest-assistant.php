@@ -5,7 +5,7 @@
  * Description: A plugin to assist Forest theme in adding widgets.
  * Author: Codestag
  * Author URI: https://codestag.com
- * Version: 1.0
+ * Version: 1.0.1
  * Text Domain: forest-assistant
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
@@ -55,9 +55,9 @@ if ( ! class_exists( 'Forest_Assistant' ) ) :
 		 */
 		public function init() {
 
-		// Enqueue styles & scripts.
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+			// Enqueue styles & scripts.
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
 		}
 
