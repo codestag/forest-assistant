@@ -122,8 +122,14 @@ class Stag_Widget_Static_Content extends WP_Widget {
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
-			'page'    => 0,
-			'opacity' => 50,
+			'title'      => '',
+			'page'       => 0,
+			'bg'         => '',
+			'bg_image'   => '',
+			'bg_opacity' => 50,
+			'color'      => '',
+			'link'       => '',
+
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );

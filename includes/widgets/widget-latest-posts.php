@@ -139,7 +139,8 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
-			'button_text' => 'Go to Blog',
+			'title'		  => '',
+			'button_text' => __( 'Go to Blog', 'forest-assistant' ),
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
@@ -149,12 +150,12 @@ class Stag_Widget_Latest_Posts extends WP_Widget {
 
 	<p>
 	  <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'forest-assistant' ); ?></label>
-	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
+	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 	</p>
 
 	<p>
 	  <label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'Button Text:', 'forest-assistant' ); ?></label>
-	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" value="<?php echo $instance['button_text']; ?>" />
+	  <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" value="<?php echo esc_attr( $instance['button_text'] ); ?>" />
 	  <span class="description"><?php _e( 'Enter the text for blog button', 'forest-assistant' ); ?></span>
 	</p>
 
