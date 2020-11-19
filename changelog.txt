@@ -1,6 +1,6 @@
 ### Forest Assistant Changelog
 
-## 1.0.1 - November 18, 2020
+## 1.0.1 - November 19, 2020
 * Fix contact form shortcode outputting spaces inside input
 * Improve widgets & fix undefined index warnings
 * Add translation support
