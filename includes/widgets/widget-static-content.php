@@ -43,8 +43,6 @@ class Stag_Widget_Static_Content extends WP_Widget {
 
 		echo $before_widget;
 
-		$the_page = get_page( $page );
-
 		$query_args = array(
 			'page_id'        => $page,
 			'posts_per_page' => 1,
@@ -129,7 +127,6 @@ class Stag_Widget_Static_Content extends WP_Widget {
 			'bg_opacity' => 50,
 			'color'      => '',
 			'link'       => '',
-
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
