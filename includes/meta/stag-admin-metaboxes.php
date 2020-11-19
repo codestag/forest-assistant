@@ -72,7 +72,7 @@ function stag_create_meta_box( $post, $meta_box ) {
 						frame.toolbar.get('view').set({
 							insert: {
 								style: 'primary',
-								text: '<?php _e("Insert", "stag"); ?>',
+								text: '<?php _e("Insert", "forest-assistant"); ?>',
 
 								click: function() {
 									var models = frame.state().get('selection'),
@@ -103,14 +103,14 @@ function stag_create_meta_box( $post, $meta_box ) {
 			        $('#stag_images_upload').on('click', function(e) {
 			            e.preventDefault();
 			            var options = {
-			                title: '<?php _e("Create Featured Gallery", "stag"); ?>',
+			                title: '<?php _e("Create Featured Gallery", "forest-assistant"); ?>',
 			                state: 'gallery-edit',
 			                frame: 'post',
 			                selection: selection
 			            };
 
 			            if( frame || selection ) {
-			                options['title'] = '<?php _e("Edit Featured Gallery", "stag"); ?>';
+			                options['title'] = '<?php _e("Edit Featured Gallery", "forest-assistant"); ?>';
 			            }
 
 			            frame = wp.media(options).open();
@@ -118,7 +118,7 @@ function stag_create_meta_box( $post, $meta_box ) {
 			            // Tweak Views
 			            frame.menu.get('view').unset('cancel');
 			            frame.menu.get('view').unset('separateCancel');
-			            frame.menu.get('view').get('gallery-edit').el.innerHTML = '<?php _e("Edit Featured Gallery", "stag"); ?>';
+			            frame.menu.get('view').get('gallery-edit').el.innerHTML = '<?php _e("Edit Featured Gallery", "forest-assistant"); ?>';
 			            frame.content.get('view').sidebar.unset('gallery'); // Hide Gallery Settings in sidebar
 
 			            // when editing a gallery
@@ -154,7 +154,7 @@ function stag_create_meta_box( $post, $meta_box ) {
 			                frame.toolbar.get('view').set({
 			                    insert: {
 			                        style: 'primary',
-			                        text: '<?php _e("Save Featured Gallery", "stag"); ?>',
+			                        text: '<?php _e("Save Featured Gallery", "forest-assistant"); ?>',
 			                        click: function(){
 			                            var models = frame.state().get('library'),
 			                                ids = '';
@@ -163,7 +163,7 @@ function stag_create_meta_box( $post, $meta_box ) {
 			                                ids += attachment.id + ','
 			                            });
 
-			                            this.el.innerHTML = '<?php _e("Saving...", "stag"); ?>';
+			                            this.el.innerHTML = '<?php _e("Saving...", "forest-assistant"); ?>';
 
 			                            $.ajax({
 			                                type: 'POST',
